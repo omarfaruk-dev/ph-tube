@@ -7,6 +7,12 @@
     <title>PH Tube | Video String Platform</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .active{
+            background: #FF1F3D;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,14 +29,14 @@
                     </svg>
                     <input id="search-input" type="search" required="" placeholder="Search">
                 </label></div>
-            <div class="blogs"><button class="btn btn-sm md:btn text-white md:text-base border-none bg-[#FF1F3D]">Sort
+            <div class="blogs"><button id="btn-all" class="btn btn-sm md:btn text-white md:text-base border-none bg-[#FF1F3D]">Sort
                     By View</button></div>
         </nav>
     </header>
     <!-- toggle button section -->
     <section id="category-container" class="flex py-4 md:py-6 gap-2 md:gap-4 justify-center items-center">
         <div>
-            <button id="btn-all"
+            <button id="btn-all" onclick="loadVideos()"
                 class="btn btn-sm border-none bg-[#25252533] hover:text-white hover:bg-[#FF1F3D] active"> All</button>
         </div>
 
@@ -55,6 +61,11 @@
                  <small class="pl-14 text-sm text-[#171717B3]">5.4K Views</small>
                  <button onclick="loadVideoDetails('aaad')" class="btn btn-block mt-3">Show Details</button>
              </div> -->
+             <!-- not found -->
+             <div class="col-span-full flex flex-col justify-center items-center mt-6 md:mt-16 space-y-2">
+                <img class="w-28 md:w-32" src="./assets/Icon.png" alt="">
+                <h2 class="text-2xl md:text-[32px] font-bold text-center">Oops!! Sorry, There is no <br> content here</h2>
+            </div>
     </section>
     </main>
 

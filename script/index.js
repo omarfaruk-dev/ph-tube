@@ -1,3 +1,12 @@
+//remove active class
+function removeActiveClass(){
+    const activeButtons = document.getElementsByClassName("active");
+    for(let btn of activeButtons){
+        btn.classList.remove("active");
+    }
+    console.log(activeButtons);
+}
+
 function loadCategories() {
     //fetch the data
     fetch('https://openapi.programming-hero.com/api/phero-tube/categories')
@@ -10,9 +19,25 @@ function loadCategories() {
 //load videos
 function loadVideos() {
     fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
-    .then(response => response.json())
-    .then(data =>displayVideos(data.videos))
+        .then(response => response.json())
+        .then(data => {
+            displayVideos(data.videos);
+            document.getElementById("btn-all").classList.add("active");
+        })
 }
+//load categories videos
+const loadCategoryVideos = (id) => {
+    const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data =>{
+            removeActiveClass();
+            const clickedButton = document.getElementById(`btn-${id}`);
+            clickedButton.classList.add("active");
+            displayVideos(data.category)
+        });
+};
 
 //display button categories
 function displayCategories(categories) {
@@ -23,8 +48,7 @@ function displayCategories(categories) {
         // create element
         const categoryDiv = document.createElement("div");
         categoryDiv.innerHTML = `
-         <button class="btn btn-sm border-none bg-[#25252533] hover:text-white hover:bg-[#FF1F3D]">${cat.category}</button>
-        
+         <button id="btn-${cat.category_id}" onclick="loadCategoryVideos(${cat.category_id})" class="btn btn-sm border-none bg-[#25252533] hover:text-white hover:bg-[#FF1F3D]">${cat.category}</button>
         `
         // append the element
         categoryContainer.append(categoryDiv);
@@ -36,6 +60,13 @@ function displayCategories(categories) {
 //display videos
 const displayVideos = (videos) => {
     const videoContainer = document.getElementById("video-container");
+    videoContainer.innerHTML = ""; // to empty previous category video on button click
+    if (videos.length == 0) {
+        videoContainer.innerHTML = `<div class="col-span-full flex flex-col justify-center items-center mt-6 md:mt-16 space-y-2">
+                <img class="w-28 md:w-32" src="./assets/Icon.png" alt="">
+                <h2 class="text-2xl md:text-[32px] font-bold text-center">Oops!! Sorry, There is no <br> content here</h2>
+            </div>`
+    }
     videos.forEach(video => {
         const videoCard = document.createElement("div");
         videoCard.innerHTML = `
@@ -63,7 +94,6 @@ const displayVideos = (videos) => {
 
 //call function
 loadCategories();
-loadVideos()
 
 // [
 //     {
