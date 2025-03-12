@@ -47,22 +47,6 @@
         <section id="video-container"
             class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-2 container mx-auto">
             <!-- single video card -->
-            <!-- <div>
-                <figure class="relative">
-                 <img class="rounded-md w-full h-[200px] object-cover" src="https://i.ibb.co/f9FBQwz/smells.jpg" alt="">
-                 <span class="absolute bottom-3 right-4 bg-black rounded-sm text-white text-sm px-1">1672656000</span>
-                </figure>
-                 <div class="flex items-center gap-4 mt-3">
-                     <img class="w-10 h-10 rounded-full" src="https://i.ibb.co/k4tkc42/oliviar-harris.jpg" alt="">
-                     <h3 class="font-bold">Smells Like Teen Spirit</h3>
-                 </div>
-                 <div class="flex items-center gap-2 mx-auto pl-14">
-                     <small class="text-sm text-[#171717B3]">Oliver Harris</small>
-                     <small class="w-5"><img src="assets/verified-check.svg" alt=""></small>
-                 </div>
-                 <small class="pl-14 text-sm text-[#171717B3]">5.4K Views</small>
-                 <button onclick="loadVideoDetails('aaad')" class="btn btn-block mt-3">Show Details</button>
-             </div> -->
 
             <!-- not found -->
             <div class="col-span-full flex flex-col justify-center items-center mt-6 md:mt-16 space-y-2">
@@ -71,6 +55,10 @@
                 </h2>
             </div>
         </section>
+        <!-- pre loader section-->
+         <section id="loader" class="text-center py-10 hidden">
+            <span class="loading loading-dots loading-xl"></span>
+         </section>
         <!-- modal -->
         <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
         <dialog id="video_details" class="modal">
@@ -109,7 +97,7 @@
     </main>
 
 
-    <script src="script/index.js"></script>
+    <script src="./script/index.js"></script>
 </body>
 
 </html>
