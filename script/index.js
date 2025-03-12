@@ -12,7 +12,6 @@ function loadCategories() {
     fetch('https://openapi.programming-hero.com/api/phero-tube/categories')
         //convert promise to json
         .then(res => res.json())
-        //send data to display
         .then(data => displayCategories(data.categories))
 }
 
@@ -104,7 +103,7 @@ const displayVideos = (videos) => {
         <div class="shadow">
                 <figure class="relative">
                  <img class="rounded-md w-full h-[200px] object-cover" src="${video.thumbnail}" alt="">
-                 <span class="absolute bottom-3 right-4 bg-black rounded-sm text-white text-sm px-1">${এখানে}</span>
+                 <span class="absolute bottom-3 right-4 bg-black rounded-sm text-white text-sm px-1"></span>
                 </figure>
                  <div class="flex items-center gap-4 mt-3">
                      <img class="w-10 h-10 rounded-full" src="${video.authors[0].profile_picture}" alt="">
